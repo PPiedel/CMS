@@ -6,6 +6,7 @@ import java.util.Collection;
 @Entity
 public class Post {
     @Id
+    @GeneratedValue
     private long id;
     private String title;
     private String content;

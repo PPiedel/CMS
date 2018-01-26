@@ -27,7 +27,7 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "author")
     private Collection<Post> posts;
 
     //required by Hibernate
