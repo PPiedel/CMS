@@ -49,11 +49,10 @@ public class RegisterController {
         User registered = createUserAccount(userDto);
 
         if (registered != null) {
-            logger.debug("User registered : ", registered.toString());
+            logger.debug("User already registered : ", registered.toString());
             return "redirect:/register/success";
 
         } else {
-            System.out.println("Registered is null");
             return "redirect:/register/error";
         }
     }
