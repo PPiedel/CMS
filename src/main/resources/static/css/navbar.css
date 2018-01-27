@@ -1,0 +1,42 @@
+.container-fluid {
+    width: 80%;
+}
+
+.navbar {
+    background: white;
+    border-color: #e7e7e7
+}
+
+.navbar-brand {
+    float: none;
+}
+
+.navbar-collapse {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin: 0 auto;
+        display: table;
+        table-layout: fixed;
+        float: none;
+    }
+
+    .navbar-right {
+        margin-top: -50px;
+    }
+
+    .flex-container {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+    }
+
+    .space-between {
+        justify-content: space-between;
+    }
+}
