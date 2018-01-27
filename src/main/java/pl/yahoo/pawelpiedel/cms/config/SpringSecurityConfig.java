@@ -15,13 +15,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/static/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/img/**").permitAll()
-                .antMatchers("/console").permitAll()
-                .antMatchers("/resources/**").permitAll()
-                .anyRequest().authenticated();
+                //h2-console configuration for debuging purposes only
+                .antMatchers("/console/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .headers().frameOptions().disable()
+                .and()
+                .csrf().disable();
+
+
     }
 
     @Override
