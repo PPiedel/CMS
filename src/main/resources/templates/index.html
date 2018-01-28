@@ -4,27 +4,45 @@
     <title>Blog</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link type="text/css" rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/login_register.css" th:href="@{/css/index.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login_register.css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" th:href="@{/css/navbar.css}"/>
+
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar">...</div>
 
-<div ng-controller="Hello">
-    <p>The ID is </p>
+<div class="container">
+    <div>
+        <app/>
+    </div>
 </div>
 
 <div th:replace="fragments/footer :: footer">...</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/core-js/client/shim.min.js"></script>
+<script type="text/javascript" src="webjars/rxjs/bundles/Rx.min.js"></script>
+<script type="text/javascript" src="webjars/zone.js/dist/zone.min.js"></script>
+<script type="text/javascript" src="webjars/reflect-metadata/Reflect.js"></script>
+<script type="text/javascript" src="webjars/angular__core/bundles/core.umd.js"></script>
+<script type="text/javascript" src="webjars/angular__common/bundles/common.umd.js"></script>
+<script type="text/javascript" src="webjars/angular__compiler/bundles/compiler.umd.js"></script>
+<script type="text/javascript"
+        src="webjars/angular__platform-browser/bundles/platform-browser.umd.js"></script>
+<script type="text/javascript"
+        src="webjars/angular__platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
+<script type="text/javascript" src="webjars/angular__http/bundles/http.umd.js"></script>
+<script type="text/javascript" src="js/hello.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        ng.platformBrowserDynamic.platformBrowserDynamic().bootstrapModule(AppModule);
+    });
+</script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-
-<script type="text/javascript" src="../static/js/posts.js" th:src="@{/js/posts.js}"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 </body>
