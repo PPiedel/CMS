@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.yahoo.pawelpiedel.cms.dto.UserDto;
 import pl.yahoo.pawelpiedel.cms.model.User;
-import pl.yahoo.pawelpiedel.cms.services.EmailExistsException;
-import pl.yahoo.pawelpiedel.cms.services.UserService;
+import pl.yahoo.pawelpiedel.cms.services.user.EmailExistsException;
+import pl.yahoo.pawelpiedel.cms.services.user.UserService;
 
 import javax.validation.Valid;
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" ng-app="posts" lang="en">
 <head>
     <title>Blog</title>
     <meta charset="utf-8"/>
@@ -10,12 +10,22 @@
     <link rel="stylesheet" type="text/css" href="../static/css/navbar.css" th:href="@{/css/navbar.css}"/>
 </head>
 <body>
-
 <div th:replace="fragments/navbar :: navbar">...</div>
+
+<div ng-controller="Hello">
+    <p>The ID is </p>
+</div>
 
 <div th:replace="fragments/footer :: footer">...</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+
+<script type="text/javascript" src="../static/js/posts.js" th:src="@{/js/posts.js}"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

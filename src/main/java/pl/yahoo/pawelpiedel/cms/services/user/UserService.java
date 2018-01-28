@@ -1,4 +1,4 @@
-package pl.yahoo.pawelpiedel.cms.services;
+package pl.yahoo.pawelpiedel.cms.services.user;
 
 import pl.yahoo.pawelpiedel.cms.dto.UserDto;
 import pl.yahoo.pawelpiedel.cms.model.User;
