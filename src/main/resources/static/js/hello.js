@@ -5,9 +5,7 @@ var AppComponent = ng.core.Component({
     constructor: [ng.http.Http, function (http) {
         var self = this;
         self.posts = "";
-        http.get("/posts").subscribe(response = > self.posts = response.json()
-    )
-        ;
+        http.get("/posts").subscribe(response => self.posts = response.json());
         console.log(self.posts.toString());
     }]
 });
