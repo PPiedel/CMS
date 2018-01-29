@@ -18,6 +18,6 @@ public class PostController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/posts")
     public List<Post> posts() {
-        return postService.findAllOrderedByDate();
+        return postService.findAll();
     }
 }

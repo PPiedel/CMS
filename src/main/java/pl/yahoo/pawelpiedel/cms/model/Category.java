@@ -1,5 +1,7 @@
 package pl.yahoo.pawelpiedel.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,11 +12,12 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     private String category;
 
     @OneToMany(mappedBy = "category")
+    @JsonBackReference
     private List<Post> posts;
 
     public String getCategory() {

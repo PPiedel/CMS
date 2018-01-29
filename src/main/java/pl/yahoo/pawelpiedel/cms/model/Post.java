@@ -1,5 +1,7 @@
 package pl.yahoo.pawelpiedel.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -8,27 +10,31 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue
-    private long id;
-
-    private String title;
-
-    private String content;
-
-    private Date date;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonManagedReference
     private User author;
 
+    @Column(name = "content", length = 2048)
+    private String content;
+
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category")
+    @JsonManagedReference
     private Category category;
 
     @ManyToMany
     @JoinTable(name = "posts_tags",
-    joinColumns =  @JoinColumn(name = "post_id") ,
-    inverseJoinColumns = @JoinColumn(name = "tag_id"))
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private String title;
+
     private List<Tag> tags;
+    private Date date;
+    private String posterPath;
+
 
     public String getTitle() {
         return title;
@@ -78,6 +84,14 @@ public class Post {
         this.tags = tags;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -86,6 +100,7 @@ public class Post {
                 ", content='" + content + '\'' +
                 ", date=" + date +
                 ", author=" + author +
+                ", posterPath=" + posterPath +
                 '}';
     }
 }

@@ -15,13 +15,13 @@ public class UserDto {
     @NotEmpty
     private String password;
 
-    public UserDto() {
-    }
+    @NotNull
+    @NotEmpty
+    private String firstName;
 
-    public UserDto(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+    @NotNull
+    @NotEmpty
+    private String lastName;
 
     public String getEmail() {
         return email;
@@ -39,11 +39,21 @@ public class UserDto {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getFirstName() {
+        return firstName;
     }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+
 }

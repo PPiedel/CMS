@@ -1,7 +1,7 @@
 package pl.yahoo.pawelpiedel.cms.model;
 
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,12 +12,18 @@ import java.util.Objects;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotEmpty
+    private int id;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @NotEmpty
+
     private String password;
+
+    @Column(name = "firstName",nullable = false)
+    private String firstName;
+
+    @Column(name = "lastName",nullable = false)
+    private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -29,23 +35,18 @@ public class User {
     private List<Role> roles;
 
     @OneToMany(mappedBy = "author")
+    @JsonBackReference
     private List<Post> posts;
 
     //required by Hibernate
     public User() {
     }
 
-    public User(String email, String password, List<Role> roles) {
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,6 +74,30 @@ public class User {
         this.roles = roles;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,8 +122,6 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + roles +
-                ", posts=" + posts +
                 '}';
     }
 }

@@ -22,15 +22,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerNewUser(UserDto userDto) throws EmailExistsException {
-        User user = null;
+    public User registerNewUser(UserDto userDto) throws EmailExistsException{
+        User user;
+
         if (emailExist(userDto.getEmail())) {
             throw new EmailExistsException(
-                    "There is an account with that email adress: "
+                    "There is an account with that email address: "
                             + userDto.getEmail());
         } else {
             user = new User();
             user.setEmail(userDto.getEmail());
+            user.setFirstName(userDto.getFirstName());
+            user.setLastName(userDto.getLastName());
             user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
             user.setRoles(Collections.singletonList(new Role("ROLE_USER")));
         }

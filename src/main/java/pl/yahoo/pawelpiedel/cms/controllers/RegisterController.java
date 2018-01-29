@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,11 +46,13 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register/user", method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") @Valid UserDto userDto) {
-        User registered = createUserAccount(userDto);
+    public String registerUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result) {
+        User registered = null;
+        if (!result.hasErrors()) {
+            registered = registerNewUser(userDto, result);
+        }
 
         if (registered != null) {
-            logger.debug("User already registered : ", registered.toString());
             return "redirect:/register/success";
 
         } else {
@@ -57,12 +60,11 @@ public class RegisterController {
         }
     }
 
-    private User createUserAccount(UserDto userDto) {
+    private User registerNewUser(UserDto accountDto, BindingResult result) {
         User registered;
         try {
-            registered = userService.registerNewUser(userDto);
+            registered = userService.registerNewUser(accountDto);
         } catch (EmailExistsException e) {
-            System.out.println(e.getMessage());
             return null;
         }
         return registered;

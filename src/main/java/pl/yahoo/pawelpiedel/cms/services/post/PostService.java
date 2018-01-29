@@ -7,7 +7,7 @@ import pl.yahoo.pawelpiedel.cms.model.User;
 import java.util.List;
 
 public interface PostService {
-    List<Post> findAllOrderedByDate();
+    List<Post> findAll();
 
     List<Post> findPostsByAuthor(User user);
 
