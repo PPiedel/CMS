@@ -1,9 +1,13 @@
-@media (min-width: 768px) {
-    .container {
-        padding-top: 150px;
-    }
+body {
+        padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
+
+form{
+    padding: 20px;
+}
+
 .panel-login {
+
     border-color: #ccc;
     -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
