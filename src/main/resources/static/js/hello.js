@@ -1,12 +1,11 @@
 var AppComponent = ng.core.Component({
     selector: 'app',
-    template: '<div *ngFor="let post of posts">{{post.title}}</div>'
+    templateUrl: '../ng_templates/posts.html'
 }).Class({
     constructor: [ng.http.Http, function (http) {
         var self = this;
         self.posts = "";
         http.get("/posts").subscribe(response => self.posts = response.json());
-        console.log(self.posts.toString());
     }]
 });
 
