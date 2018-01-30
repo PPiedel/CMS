@@ -2,7 +2,6 @@ body {
     font-size: .875rem;
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
-
 .feather {
     width: 16px;
     height: 16px;
@@ -14,20 +13,19 @@ body {
  */
 
 .sidebar {
-
+    padding-top: 70px;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 100; /* Behind the navbar */
-    padding-top: 70px;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
 .sidebar-sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 48px; /* Height of navbar */
+    top: 56px; /* Height of navbar */
     height: calc(100vh - 48px);
     padding-top: .5rem;
     overflow-x: hidden;
