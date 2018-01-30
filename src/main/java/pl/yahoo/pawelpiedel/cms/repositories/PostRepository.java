@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.yahoo.pawelpiedel.cms.model.Category;
 import pl.yahoo.pawelpiedel.cms.model.Post;
-import pl.yahoo.pawelpiedel.cms.model.User;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post, Long> {
     List<Post> findAll();
 
-    List<Post> findByAuthor(User author);
+    List<Post> findByAuthor_Email(String email);
 
     List<Post> findByCategory(Category category);
 

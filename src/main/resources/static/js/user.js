@@ -1,11 +1,11 @@
 var AppComponent = ng.core.Component({
     selector: 'app',
-    templateUrl: '../ng_templates/posts_ng_template.html'
+    templateUrl: '../ng_templates/user_posts_ng_template.html'
 }).Class({
     constructor: [ng.http.Http, function (http) {
         var self = this;
         self.posts = "";
-        http.get("/posts").subscribe(response => self.posts = response.json());
+        http.get("/user/posts").subscribe(response => self.posts = response.json());
     }]
 });
 
