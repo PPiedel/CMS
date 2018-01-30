@@ -39,6 +39,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/logout/successful").permitAll()
                 .antMatchers("/posts").permitAll()
+                .antMatchers("/user/**").authenticated()
 
                 //h2-console configuration for debugging purposes only
                 .antMatchers("/console/**").permitAll()
@@ -52,7 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login/user")
-                .defaultSuccessUrl("/login/success")
+                .defaultSuccessUrl("/user")
                 .failureUrl("/login/error")
                 .usernameParameter("email")
                 .passwordParameter("password")
