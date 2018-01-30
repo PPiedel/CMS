@@ -12,7 +12,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private String category;
 

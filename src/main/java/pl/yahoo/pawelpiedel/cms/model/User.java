@@ -12,20 +12,20 @@ import java.util.Objects;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     private String password;
 
-    @Column(name = "firstName",nullable = false)
+    @Column(name = "firstName", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName",nullable = false)
+    @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -34,7 +34,7 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.PERSIST)
     @JsonBackReference
     private List<Post> posts;
 
@@ -42,11 +42,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
