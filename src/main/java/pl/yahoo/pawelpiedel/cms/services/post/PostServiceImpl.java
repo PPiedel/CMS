@@ -31,4 +31,9 @@ public class PostServiceImpl implements PostService {
     public List<Post> findPostsByCategory(Category category) {
         return postRepository.findByCategory(category);
     }
+
+    @Override
+    public void deletePost(Long id) {
+        postRepository.delete(id);
+    }
 }

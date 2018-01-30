@@ -12,4 +12,6 @@ public interface PostService {
 
     List<Post> findPostsByCategory(Category category);
 
+    void deletePost(Long id);
+
 }

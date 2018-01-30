@@ -1,4 +1,4 @@
-package pl.yahoo.pawelpiedel.cms.controllers;
+package pl.yahoo.pawelpiedel.cms.controllers.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -26,6 +26,7 @@ public class PostController {
     public List<Post> posts() {
         return postService.findAll();
     }
+
 
     @GetMapping("/user/posts")
     public List<Post> userPosts() {
