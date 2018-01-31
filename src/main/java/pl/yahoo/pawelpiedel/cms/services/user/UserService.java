@@ -6,4 +6,6 @@ import pl.yahoo.pawelpiedel.cms.model.User;
 
 public interface UserService {
     User registerNewUser(UserDto userDto) throws EmailExistsException;
+
+    User findUserByEmail(String email);
 }

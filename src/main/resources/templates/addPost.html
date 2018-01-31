@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" ng-app="user">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <base href="/user">
     <title>Blog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,15 +9,29 @@
 
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../static/css/addPost.css" th:href="@{/css/addPost.css}"/>
+
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar">...</div>
 <div class="container">
     <div class="row">
         <div th:replace="fragments/dashboard :: sidebar">...</div>
-
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <app></app>
+            <form id="add-post-form" th:action="@{/user/posts}" th:object="${post}" th:method="POST">
+                <div class="form-group">
+                    <label for="postTitle">Post title</label>
+                    <input th:field="*{title}"  type="text" class="form-control" id="postTitle" placeholder="Enter post title" required/>
+                </div>
+                <div class="form-group">
+                    <label for="postTitle">Backdrop path</label>
+                    <input th:field="*{backdropPath}"  type="text" class="form-control" id="backdropPath" placeholder="Enter backdrop image path"/>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Text</label>
+                    <textarea th:field="*{content}"  class="form-control" id="postContent" rows="20" required>Enter post content</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
         </main>
     </div>
 </div>
@@ -26,23 +39,5 @@
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script type="text/javascript" src="webjars/core-js/client/shim.min.js"></script>
-<script type="text/javascript" src="webjars/rxjs/bundles/Rx.min.js"></script>
-<script type="text/javascript" src="webjars/zone.js/dist/zone.min.js"></script>
-<script type="text/javascript" src="webjars/reflect-metadata/Reflect.js"></script>
-<script type="text/javascript" src="webjars/angular__core/bundles/core.umd.js"></script>
-<script type="text/javascript" src="webjars/angular__common/bundles/common.umd.js"></script>
-<script type="text/javascript" src="webjars/angular__compiler/bundles/compiler.umd.js"></script>
-<script type="text/javascript"
-        src="webjars/angular__platform-browser/bundles/platform-browser.umd.js"></script>
-<script type="text/javascript"
-        src="webjars/angular__platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
-<script type="text/javascript" src="webjars/angular__http/bundles/http.umd.js"></script>
-<script type="text/javascript" src="js/user.js"></script>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        ng.platformBrowserDynamic.platformBrowserDynamic().bootstrapModule(AppModule);
-    });
-</script>
 </body>
 </html>

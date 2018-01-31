@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link " href="/user">
+                    <span data-feather="myPosts"></span>My posts <span class="sr-only"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="user/posts/add">
+                    <span data-feather="myPosts"></span>Add post <span class="sr-only"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+
