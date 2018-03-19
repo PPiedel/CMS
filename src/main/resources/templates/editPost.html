@@ -8,8 +8,7 @@
     <meta name="author" content="Pawel Piedel">
 
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/addPost.css" th:href="@{/css/addPost.css}"/>
-
+    <link rel="stylesheet" type="text/css" href="../static/css/editPost.css" th:href="@{/css/editPost.css}"/>
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar">...</div>
@@ -17,24 +16,26 @@
     <div class="row">
         <div th:replace="fragments/dashboard :: sidebar">...</div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form id="add-post-form" th:action="@{/user/posts}" th:object="${post}" th:method="POST">
+            <form id="add-post-form" th:action="@{/user/posts/edit}" th:object="${post}" th:method="POST">
                 <div class="form-group">
                     <label for="postTitle">Post title</label>
-                    <input th:field="*{title}"  type="text" class="form-control" id="postTitle" placeholder="Enter post title" required/>
+                    <input th:field="*{title}"  type="text" class="form-control" id="postTitle" value="*{title}" required/>
                 </div>
                 <div class="form-group">
                     <label for="postTitle">Backdrop path</label>
-                    <input th:field="*{backdropPath}"  type="text" class="form-control" id="backdropPath" placeholder="Enter backdrop image path"/>
+                    <input th:field="*{posterPath}"  type="text" class="form-control" id="posterPath" value="*{posterPath}"/>
                 </div>
                 <div class="form-group">
                     <label for="postContent">Text</label>
-                    <textarea th:field="*{content}"  class="form-control" id="postContent" rows="20" required>Enter post content</textarea>
+                    <textarea th:field="*{content}"  class="form-control" id="postContent" rows="20" required>*{content}</textarea>
                 </div>
-
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <a href="/user" class="btn btn-danger">Cancel</a>
             </form>
         </main>
     </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
