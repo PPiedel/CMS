@@ -33,6 +33,7 @@ public class Post {
 
     private String title;
     private Date date;
+    @Column(name = "posterpath")
     private String posterPath;
 
     public Long getId() {
