@@ -3,7 +3,6 @@ package pl.yahoo.pawelpiedel.cms.services.post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.yahoo.pawelpiedel.cms.dto.PostDto;
-import pl.yahoo.pawelpiedel.cms.model.Category;
 import pl.yahoo.pawelpiedel.cms.model.Post;
 import pl.yahoo.pawelpiedel.cms.model.User;
 import pl.yahoo.pawelpiedel.cms.repositories.PostRepository;
@@ -30,9 +29,10 @@ public class PostServiceImpl implements PostService {
         return postRepository.findByAuthor_Email(email);
     }
 
+
     @Override
-    public List<Post> findPostsByCategory(Category category) {
-        return postRepository.findByCategory(category);
+    public Post findPostById(Long id) {
+        return postRepository.findOne(id);
     }
 
     @Override
@@ -47,8 +47,20 @@ public class PostServiceImpl implements PostService {
         post.setAuthor(author);
         post.setContent(postDto.getContent());
         post.setPosterPath(postDto.getBackdropPath());
-        java.util.Date current  = new java.util.Date();
+        java.util.Date current = new java.util.Date();
         post.setDate(new Date(current.getTime()));
         postRepository.save(post);
+    }
+
+    @Override
+    public void editPost(PostDto newPostDto) {
+        Post oldPost = postRepository.findOne(newPostDto.getId());
+        if (oldPost != null) {
+            oldPost.setTitle(newPostDto.getTitle());
+            oldPost.setContent(newPostDto.getContent());
+            oldPost.setPosterPath(newPostDto.getBackdropPath());
+            postRepository.save(oldPost);
+        }
+
     }
 }

@@ -20,6 +20,8 @@ import java.util.List;
 
 @Controller
 public class UserDashboardController {
+    public static final String POST_ATTRIBUTE = "post";
+
     @Autowired
     private PostService postService;
 
@@ -36,11 +38,9 @@ public class UserDashboardController {
 
     @RequestMapping(value = "/user/posts", method = RequestMethod.POST)
     public String addPost(@ModelAttribute("post") @Valid PostDto postDto) {
-        String name = authService.getCurrentUserName();
-        if (name != null) {
-            User user = userService.findUserByEmail(name);
-            postService.addPost(postDto, user);
-        }
+
+        tryToAddNewPost(postDto);
+
         return "user";
     }
 
@@ -53,9 +53,45 @@ public class UserDashboardController {
         return "user";
     }
 
+    @RequestMapping(value = "user/posts/edit/{id}", method = RequestMethod.GET)
+    public String editPost(@PathVariable("id") Long id, Model model) {
+        Post editedPost = postService.findPostById(id);
+
+        PostDto editedPostDto = getPostDtoFromPost(editedPost);
+
+        model.addAttribute(POST_ATTRIBUTE, editedPostDto);
+        return "editPost";
+    }
+
+    private PostDto getPostDtoFromPost(Post post) {
+        PostDto editedPostDto = new PostDto();
+        editedPostDto.setId(post.getId());
+        editedPostDto.setContent(post.getContent());
+        editedPostDto.setBackdropPath(post.getPosterPath());
+        editedPostDto.setTitle(post.getTitle());
+        return editedPostDto;
+    }
+
+    @RequestMapping(value = "/user/posts/edit",method = RequestMethod.POST)
+    public String replaceEditedPost(PostDto newPostDto){
+        System.out.println(newPostDto);
+
+        postService.editPost(newPostDto);
+
+        return "user";
+    }
+
+    private void tryToAddNewPost(PostDto newPostDto) {
+        String name = authService.getCurrentUserName();
+        if (name != null) {
+            User user = userService.findUserByEmail(name);
+            postService.addPost(newPostDto, user);
+        }
+    }
+
     @RequestMapping(value = "user/posts/add", method = RequestMethod.GET)
     public String addPost(Model model) {
-        model.addAttribute("post", new PostDto());
+        model.addAttribute(POST_ATTRIBUTE, new PostDto());
         return "addPost";
     }
 

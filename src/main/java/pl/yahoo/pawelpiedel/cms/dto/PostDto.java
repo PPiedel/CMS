@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class PostDto {
+    private Long id;
+
     @NotNull
     @NotEmpty
     private String title;
@@ -37,5 +39,13 @@ public class PostDto {
 
     public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

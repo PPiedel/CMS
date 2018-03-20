@@ -19,16 +19,17 @@
             <form id="add-post-form" th:action="@{/user/posts/edit}" th:object="${post}" th:method="POST">
                 <div class="form-group">
                     <label for="postTitle">Post title</label>
-                    <input th:field="*{title}"  type="text" class="form-control" id="postTitle" value="*{title}" required/>
+                    <input th:field="*{title}"  type="text" class="form-control" id="postTitle"  required/>
                 </div>
                 <div class="form-group">
                     <label for="postTitle">Backdrop path</label>
-                    <input th:field="*{posterPath}"  type="text" class="form-control" id="posterPath" value="*{posterPath}"/>
+                    <input th:field="*{backdropPath}"  type="text" class="form-control" id="backdropPath"  />
                 </div>
                 <div class="form-group">
                     <label for="postContent">Text</label>
-                    <textarea th:field="*{content}"  class="form-control" id="postContent" rows="20" required>*{content}</textarea>
+                    <textarea th:field="*{content}"  class="form-control" id="postContent" rows="20" required></textarea>
                 </div>
+                <input type="hidden" th:field="*{id}">
                 <button type="submit" class="btn btn-primary">Save changes</button>
                 <a href="/user" class="btn btn-danger">Cancel</a>
             </form>
