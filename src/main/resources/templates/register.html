@@ -34,11 +34,15 @@
                                     <input th:field="*{firstName}" type="text" name="firstName" id="firstNameR" tabindex="1"
                                            class="form-control"
                                            placeholder="Your first name" value="" required>
+                                    <p th:if="${#fields.hasErrors('firstName')}" class="error">First name should
+                                        contains only letters.</p>
                                 </div>
                                 <div class="form-group">
                                     <input th:field="*{lastName}" type="text" name="lastName" id="lastNameR" tabindex="1"
                                            class="form-control"
                                            placeholder="Your last name" value="" required>
+                                    <p th:if="${#fields.hasErrors('lastName')}" class="error">Last name should contains
+                                        only letters.</p>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" th:field="*{email}" name="email" id="emailR" tabindex="1"
@@ -50,6 +54,8 @@
                                     <input type="password" th:field="*{password}" name="password" id="passwordR"
                                            tabindex="2"
                                            class="form-control" placeholder="Password" required>
+                                    <p th:if="${#fields.hasErrors('password')}" class="error">Password should have at
+                                        least 6 characters.</p>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

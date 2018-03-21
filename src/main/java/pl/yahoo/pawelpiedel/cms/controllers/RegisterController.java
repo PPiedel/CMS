@@ -38,7 +38,7 @@ public class RegisterController {
         return "register";
     }
 
-    @RequestMapping(value = "/register/error", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/email-exists", method = RequestMethod.GET)
     public String registerError(Model model) {
         model.addAttribute("registerError", true);
         model.addAttribute("user", new UserDto());
@@ -47,20 +47,22 @@ public class RegisterController {
 
     @RequestMapping(value = "/register/user", method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result) {
-        User registered = null;
-        if (!result.hasErrors()) {
-            registered = registerNewUser(userDto, result);
+        User registered;
+        if (result.hasErrors()) {
+            return "register";
+        } else {
+            registered = registerNewUser(userDto);
         }
 
         if (registered != null) {
             return "redirect:/register/success";
 
         } else {
-            return "redirect:/register/error";
+            return "redirect:/register/email-exists";
         }
     }
 
-    private User registerNewUser(UserDto accountDto, BindingResult result) {
+    private User registerNewUser(UserDto accountDto) {
         User registered;
         try {
             registered = userService.registerNewUser(accountDto);
