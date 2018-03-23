@@ -1,6 +1,21 @@
-INSERT INTO USER (email,first_name,last_name,password) VALUES ('pawelpiedel@yahoo.pl','Paweł','Piędel','$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
-INSERT INTO USER (email,first_name,last_name,password) VALUES ('test1@pwr.edu.pl','Piotr','Kunikowski','$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
-INSERT INTO USER (email,first_name,last_name,password) VALUES ('test2@pwr.edu.pl','Lukasz','Markowski','$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
+INSERT INTO USER (id, email, first_name, last_name, password)
+VALUES (1, 'pawelpiedel@yahoo.pl', 'Paweł', 'Piędel', '$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
+INSERT INTO USER (id, email, first_name, last_name, password)
+VALUES (2, 'test1@pwr.edu.pl', 'Piotr', 'Kunikowski', '$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
+INSERT INTO USER (id, email, first_name, last_name, password)
+VALUES (3, 'test2@pwr.edu.pl', 'Lukasz', 'Markowski', '$2a$04$6Y6Vag4/LNURT8yhftQU8uEn5neIV5XeG0HmAcdLkHo9L/uPmSr8G');
+
+INSERT INTO ROLE (name) VALUES ('ROLE_USER');
+
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (1, SELECT id
+                                                      FROM ROLE
+                                                      WHERE name = 'ROLE_USER');
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (2, SELECT id
+                                                      FROM ROLE
+                                                      WHERE name = 'ROLE_USER');
+INSERT INTO USERS_ROLES (user_id, role_id) VALUES (3, SELECT id
+                                                      FROM ROLE
+                                                      WHERE name = 'ROLE_USER');
 
 INSERT INTO CATEGORY(category) VALUES ('technology');
 INSERT INTO CATEGORY(category) VALUES ('business');
