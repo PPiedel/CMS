@@ -1,6 +1,4 @@
 package pl.yahoo.pawelpiedel.cms.model;
-
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -11,7 +9,7 @@ import java.util.Objects;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -34,7 +32,7 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Post> posts;
 

@@ -1,7 +1,7 @@
 package pl.yahoo.pawelpiedel.cms.services.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import pl.yahoo.pawelpiedel.cms.dto.PostDto;
 import pl.yahoo.pawelpiedel.cms.model.Post;
 import pl.yahoo.pawelpiedel.cms.model.User;
@@ -10,7 +10,8 @@ import pl.yahoo.pawelpiedel.cms.repositories.PostRepository;
 import java.sql.Date;
 import java.util.List;
 
-@Service
+
+@Component
 public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
