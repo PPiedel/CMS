@@ -21,8 +21,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -51,13 +50,25 @@ public class UserDetailsServiceImplTest {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(roles.get(0).getName()));
 
-        //then
+        //when
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
         //then
         assertEquals(email, userDetails.getUsername());
         assertEquals(password, userDetails.getPassword());
         assertArrayEquals(grantedAuthorities.toArray(), userDetails.getAuthorities().toArray());
+    }
+
+    @Test
+    public void loadByUserNameShouldReturnNull() {
+        //given
+        String email = "test@gmail.com";
+
+        //when
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+
+        //then
+        assertNull(userDetails);
     }
 
     @TestConfiguration
