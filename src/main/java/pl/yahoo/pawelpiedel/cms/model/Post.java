@@ -36,6 +36,15 @@ public class Post {
     @Column(name = "posterpath")
     private String posterPath;
 
+    public Post() {
+    }
+
+    public Post(String title, String content, User author) {
+        this.author = author;
+        this.content = content;
+        this.title = title;
+    }
+
     public Long getId() {
         return id;
     }
