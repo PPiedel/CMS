@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
             user.setLastName(userDto.getLastName());
             user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
             Role userRole = roleRepository.findByName(Roles.ROLE_USER.toString());
-            System.out.println(userRole.toString());
+            // System.out.println(userRole.toString());
             user.setRoles(Collections.singletonList(userRole));
         }
 
