@@ -42,7 +42,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void addPost(PostDto postDto, User author) {
+    public Post addPost(PostDto postDto, User author) {
         Post post = new Post();
         post.setTitle(postDto.getTitle());
         post.setAuthor(author);
@@ -50,11 +50,11 @@ public class PostServiceImpl implements PostService {
         post.setPosterPath(postDto.getBackdropPath());
         java.util.Date current = new java.util.Date();
         post.setDate(new Date(current.getTime()));
-        postRepository.save(post);
+        return postRepository.save(post);
     }
 
     @Override
-    public void editPost(PostDto newPostDto) {
+    public Post editPost(PostDto newPostDto) {
         Post oldPost = postRepository.findOne(newPostDto.getId());
         if (oldPost != null) {
             oldPost.setTitle(newPostDto.getTitle());
@@ -62,6 +62,6 @@ public class PostServiceImpl implements PostService {
             oldPost.setPosterPath(newPostDto.getBackdropPath());
             postRepository.save(oldPost);
         }
-
+        return oldPost;
     }
 }

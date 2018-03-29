@@ -17,8 +17,8 @@ public interface PostService {
 
     void deletePost(Long id);
 
-    void addPost(PostDto postDto, User author);
+    Post addPost(PostDto postDto, User author);
 
-    void editPost(PostDto post);
+    Post editPost(PostDto post);
 
 }
