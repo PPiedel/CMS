@@ -11,18 +11,18 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String category;
+    private String name;
 
     @OneToMany(mappedBy = "category")
     @JsonBackReference
     private List<Post> posts;
 
-    public String getCategory() {
-        return category;
+    public String getName() {
+        return name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setName(String category) {
+        this.name = category;
     }
 
     public List<Post> getPosts() {
@@ -37,7 +37,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", category='" + category + '\'' +
+                ", name='" + name + '\'' +
                 ", posts=" + posts +
                 '}';
     }

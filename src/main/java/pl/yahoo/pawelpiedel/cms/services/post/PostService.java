@@ -2,6 +2,7 @@ package pl.yahoo.pawelpiedel.cms.services.post;
 
 import org.springframework.stereotype.Service;
 import pl.yahoo.pawelpiedel.cms.dto.PostDto;
+import pl.yahoo.pawelpiedel.cms.model.Category;
 import pl.yahoo.pawelpiedel.cms.model.Post;
 import pl.yahoo.pawelpiedel.cms.model.User;
 
@@ -12,6 +13,8 @@ public interface PostService {
     List<Post> findAll();
 
     List<Post> findPostsByAuthor(String userEmail);
+
+    List<Post> findPostsByCategory(Category category);
 
     Post findPostById(Long id);
 

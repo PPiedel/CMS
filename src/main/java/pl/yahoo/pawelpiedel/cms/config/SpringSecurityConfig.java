@@ -38,7 +38,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/logout/successful").permitAll()
-                .antMatchers("/posts").permitAll()
+                .antMatchers("/posts/**").permitAll()
+                .antMatchers("/category/**").permitAll()
                 .antMatchers("/user/**").authenticated()
 
                 //h2-console configuration for debugging purposes only

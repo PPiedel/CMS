@@ -3,6 +3,7 @@ package pl.yahoo.pawelpiedel.cms.services.post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.yahoo.pawelpiedel.cms.dto.PostDto;
+import pl.yahoo.pawelpiedel.cms.model.Category;
 import pl.yahoo.pawelpiedel.cms.model.Post;
 import pl.yahoo.pawelpiedel.cms.model.User;
 import pl.yahoo.pawelpiedel.cms.repositories.PostRepository;
@@ -28,6 +29,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findPostsByAuthor(String email) {
         return postRepository.findByAuthor_Email(email);
+    }
+
+    @Override
+    public List<Post> findPostsByCategory(Category category) {
+        return postRepository.findByCategory(category);
     }
 
 
