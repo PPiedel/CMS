@@ -3,7 +3,7 @@ package pl.yahoo.pawelpiedel.cms.model;
 import javax.persistence.*;
 
 @Entity
-public class Role {
+public class Role{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
